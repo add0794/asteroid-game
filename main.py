@@ -59,8 +59,7 @@ def main():
         for object in asteroids:
             for bullet in new_player.bullets:
                 if bullet.collision(object):
-                    bullet.kill()
-                    object.kill()
+                    object.split()
 
         # 6. Flip the display (You have this!)
         pygame.display.flip()
