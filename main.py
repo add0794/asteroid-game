@@ -51,10 +51,16 @@ def main():
         #    (Hint: This is where new_player.draw(...) goes)
         for object in drawable:
             object.draw(screen)
-            
+
         for bullet in new_player.bullets:
             bullet.update(dt)
             bullet.draw(screen)
+
+        for object in asteroids:
+            for bullet in new_player.bullets:
+                if bullet.collision(object):
+                    bullet.kill()
+                    object.kill()
 
         # 6. Flip the display (You have this!)
         pygame.display.flip()
