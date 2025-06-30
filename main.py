@@ -3,6 +3,7 @@ from constants import *
 import player
 import asteroidfield
 import asteroid
+import sys
 
 def main():
     pygame.init()
@@ -50,7 +51,12 @@ def main():
             object.draw(screen)
 
         # 6. Flip the display (You have this!)
-        pygame.display.flip() 
+        pygame.display.flip()
+
+        for object in asteroids:
+            if object.collision(new_player):
+                print("Game over!")
+                sys.exit(1)
 
 if __name__ == "__main__":
     main()
