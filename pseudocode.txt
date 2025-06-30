@@ -1,3 +1,0 @@
-1) Create asteroids
-2) Draw and update to create asteroids and update their movement
-3) Spawn new asteroids
