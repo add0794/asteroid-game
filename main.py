@@ -1,9 +1,10 @@
 import pygame
 from constants import *
-import player
+from player import Player
 import asteroidfield
 import asteroid
 import sys
+import shot
 
 def main():
     pygame.init()
@@ -20,11 +21,12 @@ def main():
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
 
-    player.Player.containers = (updatable, drawable)
+    Player.containers = (updatable, drawable)
     asteroid.Asteroid.containers = (asteroids, updatable, drawable)
     asteroidfield.AsteroidField.containers = (updatable, )
 
-    new_player = player.Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    bullets = []
+    new_player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, bullets)
     new_asteroid = asteroidfield.AsteroidField()
 
     while True:
@@ -49,6 +51,10 @@ def main():
         #    (Hint: This is where new_player.draw(...) goes)
         for object in drawable:
             object.draw(screen)
+            
+        for bullet in new_player.bullets:
+            bullet.update(dt)
+            bullet.draw(screen)
 
         # 6. Flip the display (You have this!)
         pygame.display.flip()
