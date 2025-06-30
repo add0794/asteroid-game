@@ -55,8 +55,13 @@ A classic arcade-style Asteroids game built with Python and Pygame.
 
 ## Customization
 
-- Edit `settings.py` to change game settings like screen size, colors, and speeds.
-- Modify `ship.py`, `asteroid.py`, and `bullet.py` to change game mechanics or add features.
+- Edit `constants.py` to modify game settings like screen size, colors, and speeds.
+- Customize game mechanics in:
+  - `player.py` for ship behavior and controls
+  - `asteroid.py` for asteroid properties and movement
+  - `shot.py` for bullet behavior and physics
+  - `asteroidfield.py` for asteroid spawning and management
+- Adjust the circular physics behavior in `circleshape.py`
 
 ## Contributing
 
