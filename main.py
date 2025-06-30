@@ -13,6 +13,11 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    player.Player.containers = (updatable, drawable)
+
     new_player = player.Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     while True:
@@ -26,7 +31,7 @@ def main():
 
         # 3. Update all game objects (Your player needs to update its state here!)
         #    (Hint: This is where new_player.update(dt) goes)
-        new_player.update(dt)
+        updatable.update(dt)
 
         # 4. Clear the screen (Wipe away the old frame!)
         #    (Hint: This is where screen.fill(...) goes)
@@ -35,7 +40,8 @@ def main():
 
         # 5. Draw all game objects (Show the updated state!)
         #    (Hint: This is where new_player.draw(...) goes)
-        new_player.draw(screen)
+        for object in drawable:
+            object.draw(screen)
 
         # 6. Flip the display (You have this!)
         pygame.display.flip() 
